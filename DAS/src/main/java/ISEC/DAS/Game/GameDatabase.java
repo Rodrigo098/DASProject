@@ -1,5 +1,8 @@
 package ISEC.DAS.Game;
 
+import ISEC.DAS.Player.Player;
+import ISEC.DAS.Player.PlayerFactory;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
@@ -30,7 +33,13 @@ public class GameDatabase {
         if (storage.containsKey(id)) {
             return storage.get(id);
         }
-        return new Game();
+
+        return null;
+    }
+    public Game createGame(Player white, Player black) {
+        Game game=GameFactory.createGame(white, black);
+        saveGame(game);
+        return game;
     }
 
 }
